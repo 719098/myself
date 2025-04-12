@@ -15,7 +15,7 @@ def career():
 def future():
     return render_template("future_work.html")
 @app.route("/about")
-def future():
+def about():
     return render_template("aboutme.html")
 
 
