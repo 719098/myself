@@ -46,6 +46,40 @@
       color: #444;
     }
 
+    .chart-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #00796b;
+      margin-bottom: 30px;
+    }
+
+    .list-group-item {
+      border: none;
+      background-color: #f9f9f9;
+    }
+
+    .left-text-block {
+      text-align: left;
+      padding: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .info-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .info-block {
+      width: 48%;
+      padding: 10px;
+    }
+
     .back-to-top {
       position: fixed;
       bottom: 20px;
@@ -63,70 +97,39 @@
       background-color: #004d40;
     }
 
-    .chart-container {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      text-align: center;
-      color: #00796b;
-      margin-bottom: 30px;
-    }
-
-    .list-group-item {
-      border: none;
-      background-color: #f9f9f9;
-    }
-
-    /* 文字置左區塊 */
-    .left-text-block {
-      text-align: left;
-      padding: 20px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #555;
-    }
-
-    /* 回到首頁 */
-    .back-home {
+    .top-bar {
       position: fixed;
       top: 20px;
       left: 20px;
       background-color: #00796b;
       color: white;
       padding: 10px 20px;
-      border: none;
       border-radius: 5px;
-      cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
     }
 
-    .back-home:hover {
-      background-color: #004d40;
+    .top-bar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    /* 左右分佈 */
-    .info-container {
-      display: flex;
-      justify-content: space-between;
+    .top-bar a:hover {
+      color: #e0f2f1;
     }
-
-    .info-block {
-      width: 48%;
-      padding: 10px;
-    }
-
   </style>
 </head>
 <body>
 
-  <button class="back-home" onclick="window.location.href='/'">回到首頁</button>
-  
+  <div class="top-bar">
+    <a href="/">回到首頁</a>
+  </div>
+
   <h1>軟體設計工程師工作介紹</h1>
 
   <div class="container">
-    <!-- 介紹文字區塊 -->
+
     <div class="card">
       <div class="card-header">軟體設計工程師職責</div>
       <div class="card-body">
@@ -144,7 +147,6 @@
       </div>
     </div>
 
-    <!-- 學歷分布 -->
     <div class="card">
       <div class="card-header">學歷分布</div>
       <div class="card-body">
@@ -154,7 +156,6 @@
       </div>
     </div>
 
-    <!-- 工作經驗 -->
     <div class="card">
       <div class="card-header">工作經驗分布</div>
       <div class="card-body">
@@ -164,7 +165,6 @@
       </div>
     </div>
 
-    <!-- 性別與年齡 -->
     <div class="card">
       <div class="card-header">性別與年齡分布</div>
       <div class="card-body">
@@ -185,7 +185,6 @@
       </div>
     </div>
 
-    <!-- 薪水待遇 -->
     <div class="card">
       <div class="card-header">薪水待遇</div>
       <div class="card-body">
@@ -195,38 +194,26 @@
       </div>
     </div>
 
-    
   </div>
 
   <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">回到最上面</button>
 
   <script>
-    // 學歷分布圖
-    var educationCtx = document.getElementById('educationChart').getContext('2d');
-    new Chart(educationCtx, {
+    new Chart(document.getElementById('educationChart'), {
       type: 'pie',
       data: {
         labels: ['大學 (53%)', '博士 (1%)', '碩士 (44%)', '專科 (2%)', '高中職 (1%)'],
         datasets: [{
           data: [53, 1, 44, 2, 1],
           backgroundColor: ['#80cbc4', '#004d40', '#00796b', '#a5d6a7', '#c8e6c9'],
-          borderColor: ['#004d40', '#004d40', '#004d40', '#004d40', '#004d40'],
+          borderColor: '#004d40',
           borderWidth: 1
         }]
       },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-        }
-      }
+      options: { responsive: true, plugins: { legend: { position: 'top' } } }
     });
 
-    // 工作經驗圖
-    var experienceCtx = document.getElementById('experienceChart').getContext('2d');
-    new Chart(experienceCtx, {
+    new Chart(document.getElementById('experienceChart'), {
       type: 'bar',
       data: {
         labels: ['1年以下', '1~3年', '3~5年', '5~10年', '10~15年', '15年以上'],
@@ -238,45 +225,24 @@
           borderWidth: 1
         }]
       },
-      options: {
-        responsive: true,
-        scales: {
-          x: {
-            beginAtZero: true
-          },
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
+      options: { responsive: true, scales: { x: { beginAtZero: true }, y: { beginAtZero: true } } }
     });
 
-    // 性別分布圖
-    var genderCtx = document.getElementById('genderChart').getContext('2d');
-    new Chart(genderCtx, {
+    new Chart(document.getElementById('genderChart'), {
       type: 'pie',
       data: {
         labels: ['男性 (84%)', '女性 (16%)'],
         datasets: [{
           data: [84, 16],
           backgroundColor: ['#004d40', '#80cbc4'],
-          borderColor: ['#004d40', '#004d40'],
+          borderColor: '#004d40',
           borderWidth: 1
         }]
       },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-        }
-      }
+      options: { responsive: true, plugins: { legend: { position: 'top' } } }
     });
 
-    // 年齡分布圖
-    var ageCtx = document.getElementById('ageChart').getContext('2d');
-    new Chart(ageCtx, {
+    new Chart(document.getElementById('ageChart'), {
       type: 'bar',
       data: {
         labels: ['15-19歲', '20-24歲', '25-29歲', '30-34歲', '35-39歲', '40-44歲', '45-49歲', '50-54歲', '55-59歲', '60-64歲', '65-99歲'],
@@ -288,22 +254,10 @@
           borderWidth: 1
         }]
       },
-      options: {
-        responsive: true,
-        scales: {
-          x: {
-            beginAtZero: true
-          },
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
+      options: { responsive: true, scales: { x: { beginAtZero: true }, y: { beginAtZero: true } } }
     });
 
-    // 薪水待遇圖
-    var salaryCtx = document.getElementById('salaryChart').getContext('2d');
-    new Chart(salaryCtx, {
+    new Chart(document.getElementById('salaryChart'), {
       type: 'bar',
       data: {
         labels: ['1年以下', '1~3年', '3~5年', '5~10年', '10~15年', '15年以上'],
@@ -315,17 +269,7 @@
           borderWidth: 1
         }]
       },
-      options: {
-        responsive: true,
-        scales: {
-          x: {
-            beginAtZero: true
-          },
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
+      options: { responsive: true, scales: { x: { beginAtZero: true }, y: { beginAtZero: true } } }
     });
   </script>
 

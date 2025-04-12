@@ -11,6 +11,10 @@ def holland():
 @app.route("/career")
 def career():
     return render_template("career.html")
+@app.route("/future")
+def future():
+    return render_template("future_work.html")
+
 
 
 if __name__ == "__main__":
