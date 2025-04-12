@@ -17,6 +17,10 @@ def future():
 @app.route("/about")
 def about():
     return render_template("aboutme.html")
+@app.route("/skills")
+def skills():
+    return render_template("skills.html")
+
 
 
 
