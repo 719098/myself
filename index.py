@@ -8,6 +8,9 @@ def index():
 @app.route("/holland")
 def holland():
     return render_template("holland.html")
+@app.route("/career")
+def career():
+    return render_template("career.html")
 
 
 if __name__ == "__main__":
