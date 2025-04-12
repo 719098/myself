@@ -75,11 +75,12 @@
       margin-bottom: 40px;
     }
 
+    /* 改為長方形或橢圓形 */
     .circle {
-      width: 100px;
-      height: 100px;
+      width: 180px; /* 修改為更寬的長方形 */
+      height: 60px; /* 讓高度較小，形成橢圓形 */
       background-color: #e0f2f1;
-      border-radius: 50%;
+      border-radius: 30px; /* 保持圓角形狀 */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -107,7 +108,7 @@
     @media (max-width: 576px) {
       h1 { font-size: 36px; }
       h2 { font-size: 20px; }
-      .circle { width: 80px; height: 80px; font-size: 14px; }
+      .circle { width: 150px; height: 50px; font-size: 14px; }
     }
   </style>
 </head>
@@ -127,7 +128,6 @@
           <li class="nav-item"><a class="nav-link" href="/holland">興趣測驗結果</a></li>
           <li class="nav-item"><a class="nav-link" href="/career">相關工作介紹</a></li>
           <li class="nav-item"><a class="nav-link" href="/future">未來職涯方向</a></li>
-          
         </ul>
       </div>
     </div>
@@ -145,12 +145,10 @@
       <p>📧 E-Mail：<a href="mailto:s1101746@pu.edu.tw">s1101746@pu.edu.tw</a></p>
     </div>
 
-    <!-- 四個圓形空區塊 -->
+    <!-- 新增的長方形/橢圓形連結區塊 -->
     <div class="circle-links">
-      <a href="#" class="circle">功能 1</a>
-      <a href="#" class="circle">功能 2</a>
-      <a href="#" class="circle">功能 3</a>
-      <a href="#" class="circle">功能 4</a>
+      <a href="/about" class="circle">個人介紹</a>
+      <a href="/skills" class="circle">技能和專業能力</a>
     </div>
   </div>
 
